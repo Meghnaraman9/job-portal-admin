@@ -215,11 +215,11 @@ def get_categories():
     rows = [r[0] for r in c.execute('SELECT DISTINCT category FROM jobs ORDER BY category').fetchall()]
     conn.close()
     return jsonify(rows)
-
-if __name__ == '__main__':
-    @app.route('/')
+@app.route('/')
 def home():
     return jsonify(message='Job Portal API is running!')
+
+if __name__ == '__main__':
     init_db()
     print("🚀 Server running at http://localhost:5000")
     app.run(port=5000, debug=True)

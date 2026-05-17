@@ -5,8 +5,7 @@ import sqlite3, os, datetime
 app = Flask(__name__)
 CORS(app)
 
-DB_PATH = os.path.join(os.path.dirname(__file__), 'portal.db')
-
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'portal.db')
 def get_db():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
@@ -217,7 +216,9 @@ def get_categories():
     conn.close()
     return jsonify(rows)
 
-if __name__ == '__main__':
+@app.route('/')
+def home():
+    return jsonify(message='Job Portal API is running!')
     init_db()
     print("🚀 Server running at http://localhost:5000")
     app.run(port=5000, debug=True)

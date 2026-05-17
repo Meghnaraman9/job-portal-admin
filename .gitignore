@@ -1,0 +1,3 @@
+backend/portal.db
+backend/__pycache__/
+backend/package-lock.json

@@ -216,7 +216,8 @@ def get_categories():
     conn.close()
     return jsonify(rows)
 
-@app.route('/')
+if __name__ == '__main__':
+    @app.route('/')
 def home():
     return jsonify(message='Job Portal API is running!')
     init_db()
